@@ -1,0 +1,27 @@
+version: "3"
+
+name: reminders_kojem9ka_bot_dev
+
+services:
+  database:
+    image: postgres:15-alpine
+    ports:
+      - "5456:5432"
+    environment:
+      - POSTGRES_USER=prod
+      - POSTGRES_PASSWORD=prod
+      - POSTGRES_DB=prod
+    volumes:
+      - ./dev-utils/db_data_prod:/var/lib/postgresql/data
+
+  bot:
+    build: .
+    ports:
+      - "5457:3000"
+    env_file:
+      - .env.prod
+    environment:
+      - DB_HOST=database
+      - DB_PORT=5432
+    depends_on:
+      - database

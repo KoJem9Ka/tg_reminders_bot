@@ -1,0 +1,14 @@
+version: "3"
+
+name: reminders_kojem9ka_bot_dev
+
+services:
+  bot:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    ports:
+      - "5457:3000"
+    env_file: ../.env.prod
+    depends_on:
+      - database

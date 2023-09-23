@@ -1,0 +1,15 @@
+version: "3"
+
+name: reminders_kojem9ka_bot_dev
+
+services:
+  database:
+    image: postgres:15-alpine
+    ports:
+      - "5456:5432"
+    environment:
+      - POSTGRES_USER=dev
+      - POSTGRES_PASSWORD=dev
+      - POSTGRES_DB=dev
+    volumes:
+      - ./db_data_dev:/var/lib/postgresql/data
